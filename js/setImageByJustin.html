@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <form>
+        <label for='userInput'>User Request:
+            <input type='text' id='userRequest'>
+            <input type='submit' id='userSubmit'>
+        </label>
+    </form>
+</body>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+<script>
+    //nTv0EGtd08JY2KbjlEnIZwVsFolXRS2C
+
+   $("#userSubmit").on('click',function(event){
+       event.preventDefault();
+
+       console.log("fired!!");
+       var userAsked=$("#userRequest").val();
+       console.log(userAsked)
+       var queryUrl="http://api.giphy.com/v1/gifs/search?q=" + userAsked + "&api_key=nTv0EGtd08JY2KbjlEnIZwVsFolXRS2C&limit=5";
+       $.ajax({
+           url:queryUrl,
+           type:"GET",
+           
+       }).then(function(res){
+           var image=res.data[0].images.fixed_height_still.url;
+           var title=res.data[0].title;
+           var smallStill=res.data[0].images.fixed_height_small_still.url
+           $(document.body).append("<h1> " + title + "</h1>")
+           $(document.body).append("<img src=" + image + ">");
+         
+           console.log(res)
+       })
+   })
+</script>
+</html>

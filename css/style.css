@@ -1,0 +1,87 @@
+body {
+    background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/170VMZp/music-notes-flow-golden-sparking-loop-background-and-overlay-animation-effect-for-holiday-concert-and-special-events-blend-as-add-lighten-screen_4ysft42ml__F0005.png");
+    background-color: #cccccc;
+ }
+
+ img.background {
+    -webkit-filter: blur(35px); /* Safari */
+    filter: blur(35px);
+}
+#collage hr{
+    border:none;
+    border-top:2px solid #6b0707;
+    height:1px;
+}
+
+#collage #playPanel {
+    background-color:#18395c;
+    padding:10px 0px;
+    margin: 10px auto;
+    max-width:900px;
+    width:95%;
+}
+
+#collage #actualImageBox {
+    display: inline-block;
+    font-size:0.8em;
+    margin: 10px 10px;
+    vertical-align: top;
+    width:280px;
+}
+
+#collage #stepBox, #collage #timeBox {
+    display:inline-block;
+    width:48%;
+}
+
+#collage #stepBox div {
+    background-color:#c2defc;
+    display:inline-block;
+    padding:1px 4px;
+    margin: 0px auto;
+    max-width:800px;
+}
+
+#collage img#actualImage{
+    border:0px solid #a46;
+    height:480px;
+    width:480px;
+}
+
+#collage #sortable {
+    border:2px solid #a46;
+    list-style-type: none;
+    display: inline-block;
+    margin: 10px;
+    padding: 1px;
+    width: 600px;
+}
+
+    #collage #sortable li {
+        background-size: 400% 400%;
+        border: none;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        float: left;
+        width: 100px;
+        height: 100px;
+    }
+
+#collageE button  {
+    background-color:#6b0707;
+    border:1px solid #cce;
+    display: inline;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+    padding: 3px 8px;
+    
+}
+
+
+
+
+#justinHeader{text-align:center;
+              background-color:orange;
+              font-family:cursive;}

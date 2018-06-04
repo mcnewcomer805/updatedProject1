@@ -1,0 +1,21 @@
+﻿body {
+    font-family: 'Segoe UI', Calibri, Arial;
+    margin:0;
+}
+h2{
+    font-weight:normal;
+    text-align:center;
+}
+h3{
+    font-weight:normal;
+    margin:3px 0px;
+    text-align:center;
+}
+
+#normalImageArea{position:relative;
+                left:550px;
+                 bottom:335px;}
+
+/*#actualImage img{height:300px;}  */
+
+img{height:225px;}
