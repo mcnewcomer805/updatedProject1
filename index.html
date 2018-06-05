@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/materialize.min.css">
 </head>
 <body>
-    
+  <!--HEADER, SPACE FOR RECOMMENDED LINKS AND INPUT BOX AREA -->  
  <h1 >Enter your favorite artist below!</h1>
  <div id='space'></div>
  <form>
@@ -103,8 +103,8 @@
             })
                
         $("#userSubmit").on('click',function(event){
-            $("#justinHeader").remove();
             $("#space").empty();
+            $("#justinHeader").remove();
        event.preventDefault();
 
     //    console.log("fired!!");
@@ -130,9 +130,9 @@
 
 
 
-           var feelGoodurl="https://ws.audioscrobbler.com/2.0/?method=artist.getInfo&api_key=df3ec894b81af4750356b76a2c709e80&artist=" + userAsked + "&format=json"
+           var lastFMurl="http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&api_key=df3ec894b81af4750356b76a2c709e80&artist=" + userAsked + "&format=json"
         $.ajax({
-            url:feelGoodurl,
+            url:lastFMurl,
             type:"GET",
         }).then(function(res){
             console.log(res);
@@ -146,7 +146,7 @@
             $.each([recommend[i].name],function (band, value){
                 $.each([recommend[i].url],function(band,url){
                 console.log(value);
-                $("#space").append("<ul><li> " + value + " Url: " + url + "</li></ul>")
+                $("#space").append("<ul><li> " + value + " Url:<a href=" + url + ">Click here</a></li></ul>")
             
           
 
