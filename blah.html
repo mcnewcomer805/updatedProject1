@@ -1,0 +1,22 @@
+<script>
+$(document).on('click',"#userSubmitArtist",function(event){
+    $("#justinHeader").remove();
+event.preventDefault();
+
+//    console.log("fired!!");
+var userAskedArtist=$("#userRequestArtist").val();
+console.log(userAskedArtist)
+// var queryUrl="http://api.giphy.com/v1/gifs/search?q=" + userAsked + "&api_key=nTv0EGtd08JY2KbjlEnIZwVsFolXRS2C&limit=5";
+ var queryUrl="http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + userAskedArtist + "&api_key=b254336bcc231768f581c3536c1f3624&format=json"
+ console.log(userAskedArtist)
+// http://ws.audioscrobbler.com/2.0/?method=artist.getSimilar&api_key=b254336bcc231768f581c3536c1f3624
+$.ajax({
+   url:queryUrl,
+   type:"GET",
+   
+}).then(function(res){
+
+
+});
+})
+</script>

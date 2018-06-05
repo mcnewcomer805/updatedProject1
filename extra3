@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Image Puzzle</title>
@@ -8,42 +8,27 @@
     <script src="js/jquery-ui.js"></script>
     <script src="js/image-puzzle.js"></script>
     <script src='giphy.html'></script>
-    <script src="css/materialize.css"></script>
-    <link rel="stylesheet" href="css/materialize.min.css">
 </head>
 <body>
- 
- <h1 >Enter your favorite artist below!</h1>
- <form>
-    <label for='userInput'>User Request:
-       <input type='text' id='userRequest'>
-       <input type='submit' id='userSubmit'>
-    </label>
-</form>
-
-<div id='space'>TEXT HERE</div>
- <div id="justinHeader">
-     <h1>Feeling Puzzled!</h1>
-     <img src="http://worldartsme.com/images/puzzled-look-clipart-1.jpg">
-     </div>
- </div>
-
     <div id="collage">
         <h2>Image Puzzle</h2>
         <hr />
+        <div id='justinHeader'>
+        <h1 id='justinHeader'> Feeling Puzzled??</h1>
+        <img src="http://images.clipartpanda.com/demand-clipart-puzzled-look-clipart-1.jpg">
+        </div>
         <div id="playPanel" style="padding:5px;display:none;">
             <h3 id="imgTitle"></h3> <hr />
             <div style="display:inline-block; margin:auto; width:95%; vertical-align:top;">
                 <ul id="sortable" class="sortable"></ul>
-                <div id="actualImageBox" height="284" width="284px">  broken image placement
+                <div id="actualImageBox">  <!-- broken image placement-->
                     <div id="stepBox">
                         <div>Steps:</div><div class="stepCount">0</div>
                     </div>
                     <div id="timeBox">
                         Time Taken: <span id="timerPanel"></span> secs
                     </div>
-                    <div id='normalImageArea' height="284" width="284"><img id='normalImage' height="284" width="284"></div>
-                    <img id="actualImage" height="284" width="284"/>    <!-- real image placement-->
+                    <img id="actualImage" />    <!-- real image placement-->
                     <div>Re-arrange to create a picture like this.</div>
                     <p id="levelPanel">
                         <input type="radio" name="level" id="easy" checked="checked" value="3" /> <label for="easy">Easy</label>
@@ -58,16 +43,19 @@
                 </div>
             </div>
         </div>
-         <div id='normalImageArea'>
-             <img id='normalImage'>
-            </div>   
-         <!--ATTEMPTED TO MAKE SEPERATE CONTAINER FOR UNALTERED PIC-->
+        <div id='normalImageArea'><img id='normalImage'></div>   <!--ATTEMPTED TO MAKE SEPERATE CONTAINER FOR UNALTERED PIC-->
 <!--Justin code/experiment-->
-
+        <form>
+            
+                <label for='userInput' id='userBox'>User Request:
+                    <input type='text' id='userRequest'>
+                    <input type='submit' id='userSubmit'>
+                </label>
+            </form>
 
             <!--END Experiment-->
             
-        <div id="gameOver">
+        <div id="gameOver" style="display:none;">
             <div style="background-color: #fc9e9e; padding: 5px 10px 20px 10px; text-align: center; ">
                 <h2 style="text-align:center">Game Over!!</h2>
                 Congratulations!! <br /> You have completed this picture.
@@ -87,9 +75,9 @@
             $("#justinHeader").remove();
        event.preventDefault();
 
-    //    console.log("fired!!");
+       console.log("fired!!");
        var userAsked=$("#userRequest").val();
-    //    console.log(userAsked)
+       console.log(userAsked)
       // var queryUrl="http://api.giphy.com/v1/gifs/search?q=" + userAsked + "&api_key=nTv0EGtd08JY2KbjlEnIZwVsFolXRS2C&limit=5";
          var queryUrl="https://rest.bandsintown.com/artists/" + userAsked + "?app_id=codingbootcamp"
        $.ajax({
@@ -107,29 +95,6 @@
          
            console.log(res)
     
-
-
-    var feelGoodurl="http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&api_key=df3ec894b81af4750356b76a2c709e80&artist=" + userAsked + "&format=json"
-        $.ajax({
-            url:feelGoodurl,
-            type:"GET",
-        }).then(function(res){
-            console.log(res);
-            var band=res.artist.name;
-
-            var song=res.artist.url;
-            var recommend=res.artist.similar.artist;
-            for(var i=0;i<recommend.length;i++){
-                console.log(recommend[i])
-              //  $("#lists").append(recommend[i].name)
-            $.each([recommend[i].name],function (band, value){
-                $.each([recommend[i].url],function(band,url){
-                console.log(value);
-                $("#space").append("<ul><li> " + value + " Url: "+ url + "</li></ul>")
-            });
-            });
-          
-}
    
 
 
@@ -173,7 +138,6 @@
             }
         })
     });
-        
         </script>
     
 </body>
