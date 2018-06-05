@@ -104,6 +104,7 @@
                
         $("#userSubmit").on('click',function(event){
             $("#justinHeader").remove();
+            $("#space").empty();
        event.preventDefault();
 
     //    console.log("fired!!");
@@ -129,7 +130,7 @@
 
 
 
-           var feelGoodurl="http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&api_key=df3ec894b81af4750356b76a2c709e80&artist=" + userAsked + "&format=json"
+           var feelGoodurl="https://ws.audioscrobbler.com/2.0/?method=artist.getInfo&api_key=df3ec894b81af4750356b76a2c709e80&artist=" + userAsked + "&format=json"
         $.ajax({
             url:feelGoodurl,
             type:"GET",
