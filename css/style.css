@@ -85,3 +85,21 @@ body {
 #justinHeader{text-align:center;
               background-color:orange;
               font-family:cursive;}
+
+#youtubeId{position:relative;
+           left:0px;}
+
+#puzzleInput{position:relative;
+             left:37px;}
+
+#space{color:gold;
+       position:relative;
+       left:567px;
+       top:143px;}
+
+a{color:red;}
+
+
+
+
+             

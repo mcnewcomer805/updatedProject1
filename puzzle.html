@@ -20,6 +20,8 @@
        <input type='submit' id='userSubmit'>
     </label>
 </form>
+
+<div id='space'>TEXT HERE</div>
  <div id="justinHeader">
      <h1>Feeling Puzzled!</h1>
      <img src="http://worldartsme.com/images/puzzled-look-clipart-1.jpg">
@@ -56,14 +58,16 @@
                 </div>
             </div>
         </div>
-        <!-- <div id='normalImageArea'><img id='normalImage'></div>   -->
+         <div id='normalImageArea'>
+             <img id='normalImage'>
+            </div>   
          <!--ATTEMPTED TO MAKE SEPERATE CONTAINER FOR UNALTERED PIC-->
 <!--Justin code/experiment-->
 
 
             <!--END Experiment-->
             
-        <div id="gameOver" style="display:none;">
+        <div id="gameOver">
             <div style="background-color: #fc9e9e; padding: 5px 10px 20px 10px; text-align: center; ">
                 <h2 style="text-align:center">Game Over!!</h2>
                 Congratulations!! <br /> You have completed this picture.
@@ -103,6 +107,29 @@
          
            console.log(res)
     
+
+
+    var feelGoodurl="http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&api_key=df3ec894b81af4750356b76a2c709e80&artist=" + userAsked + "&format=json"
+        $.ajax({
+            url:feelGoodurl,
+            type:"GET",
+        }).then(function(res){
+            console.log(res);
+            var band=res.artist.name;
+
+            var song=res.artist.url;
+            var recommend=res.artist.similar.artist;
+            for(var i=0;i<recommend.length;i++){
+                console.log(recommend[i])
+              //  $("#lists").append(recommend[i].name)
+            $.each([recommend[i].name],function (band, value){
+                $.each([recommend[i].url],function(band,url){
+                console.log(value);
+                $("#space").append("<ul><li> " + value + " Url: "+ url + "</li></ul>")
+            });
+            });
+          
+}
    
 
 

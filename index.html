@@ -12,19 +12,36 @@
     <link rel="stylesheet" href="css/materialize.min.css">
 </head>
 <body>
- 
+    
  <h1 >Enter your favorite artist below!</h1>
+ <div id='space'></div>
  <form>
-    <label for='userInput'>User Request:
+    <label for='userInput' id='puzzleInput'>User Request:
        <input type='text' id='userRequest'>
        <input type='submit' id='userSubmit'>
     </label>
 </form>
+
+
+
+<!--YOUTUBE INPUT BOX-->
+<form>
+    <label for='youtube' id='youtubeId'>YOUTUBE REQUEST
+        <input type='text' id='youTubeRequest'>
+        <input type='submit' id='youTubeClick'>
+    </label>
+</form>
+
  <div id="justinHeader">
      <h1>Feeling Puzzled!</h1>
-     <img src="http://worldartsme.com/images/puzzled-look-clipart-1.jpg">
+  <!--  <img src="http://worldartsme.com/images/puzzled-look-clipart-1.jpg"> -->
      </div>
  </div>
+
+
+
+
+ 
 
     <div id="collage">
         <h2>Image Puzzle</h2>
@@ -41,18 +58,9 @@
                         Time Taken: <span id="timerPanel"></span> secs
                     </div>
                     <div id='normalImageArea' height="284" width="284"><img id='normalImage' height="284" width="284"></div>
-                    <img id="actualImage" height="284" width="284"/>    <!-- real image placement-->
-                    <div>Re-arrange to create a picture like this.</div>
-                    <p id="levelPanel">
-                        <input type="radio" name="level" id="easy" checked="checked" value="3" /> <label for="easy">Easy</label>
-                        <input type="radio" name="level" id="medium" value="4" /> <label for="medium">Medium</label>
-                        <input type="radio" name="level" id="hard" value="5" /> <label for="hard">Hard</label>
-                    </p>
-                    <div>
-                        <button id="btnRule" type="button" class="btn" onclick="rules();">Rules</button>
-                        <button id="newPhoto" type="button" class="btn">Another Photo</button>
-                        <button id="btnReplay" type="button" class="btn" onclick="about();">About</button>
-                    </div>
+             <!--       <img id="actualImage" height="284" width="284"/>  -->  <!-- real image placement-->
+                    <div>Re-arrange to create a picture like this.</div> 
+              
                 </div>
             </div>
         </div>
@@ -64,7 +72,7 @@
             <!--END Experiment-->
             
         <div id="gameOver" style="display:none;">
-            <div style="background-color: #fc9e9e; padding: 5px 10px 20px 10px; text-align: center; ">
+            <div style="background-color: #8e2b2b; padding: 5px 10px 20px 10px; text-align: center; ">
                 <h2 style="text-align:center">Game Over!!</h2>
                 Congratulations!! <br /> You have completed this picture.
                 <br />
@@ -78,6 +86,21 @@
         </div>
 
         <script>
+
+            $("#youTubeClick").on("click",function(){
+                event.preventDefault();
+                var userHit=$("#youTubeRequest").val();
+                console.log(userHit)
+                var queryUrl="https://www.youtube.com/iframe_api" + userHit + "apikey=AIzaSyBMcAuwEwiIzf1sPC1KdJ9A6MKC4x9ppj4"
+           
+               $.ajax({
+                   url:queryUrl,
+                   type:"GET",
+               }).then(function(res){
+                   console.log("Youtube res" + res)
+               })
+           
+            })
                
         $("#userSubmit").on('click',function(event){
             $("#justinHeader").remove();
@@ -102,6 +125,30 @@
         
          
            console.log(res)
+
+
+
+
+           var feelGoodurl="http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&api_key=df3ec894b81af4750356b76a2c709e80&artist=" + userAsked + "&format=json"
+        $.ajax({
+            url:feelGoodurl,
+            type:"GET",
+        }).then(function(res){
+            console.log(res);
+            var band=res.artist.name;
+
+            var song=res.artist.url;
+            var recommend=res.artist.similar.artist;
+            for(var i=0;i<recommend.length;i++){
+                console.log(recommend[i])
+                $("#lists").append(recommend[i].name)
+            $.each([recommend[i].name],function (band, value){
+                $.each([recommend[i].url],function(band,url){
+                console.log(value);
+                $("#space").append("<ul><li> " + value + " Url: " + url + "</li></ul>")
+            
+          
+
     
    
 
@@ -146,6 +193,11 @@
             }
         })
     });
+            
+            }
+        });
+       });
+        });
         </script>
     
 </body>
